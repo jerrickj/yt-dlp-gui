@@ -1,11 +1,7 @@
-from email import charset
 from yt_dlp_gui import Ui_MainWindow
 
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore as qtc
-from PyQt5 import QtGui as qtg
-import os 
-import sys
 import subprocess
 
 # https://www.youtube.com/watch?v=XXPNpdaK9WA
