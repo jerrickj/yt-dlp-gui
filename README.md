@@ -1,5 +1,7 @@
 # yt-dlp-gui
  A GUI for yt-dlp, a continuation of youtube-dl
+ Download YouTube Videos and playlists, with a simple UI for the user. 
+ 
  VERY MUCH A WORK IN PROGRESS, ONLY HAS BASIC DOWNLOAD/FORMAT FUNCTIONALITY AT THE MOMENT
  Most of the UI still needs to be implemented.
  This is more of a fun project for me, not meant to be a full-fledged all bells and whistles downloader yet.
