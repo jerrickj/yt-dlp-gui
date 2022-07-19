@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>650</width>
+    <width>675</width>
     <height>650</height>
    </rect>
   </property>
@@ -18,6 +18,9 @@
     <width>400</width>
     <height>400</height>
    </size>
+  </property>
+  <property name="mouseTracking">
+   <bool>true</bool>
   </property>
   <property name="acceptDrops">
    <bool>false</bool>
@@ -35,19 +38,19 @@
       <x>40</x>
       <y>40</y>
       <width>421</width>
-      <height>161</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="plainText">
      <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="input_url_label">
     <property name="geometry">
      <rect>
       <x>40</x>
       <y>10</y>
-      <width>181</width>
+      <width>311</width>
       <height>31</height>
      </rect>
     </property>
@@ -57,7 +60,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Input URL's:</string>
+     <string>Input URL's separated by a comma:</string>
     </property>
    </widget>
    <widget class="QPushButton" name="browse_folder_button">
@@ -65,12 +68,12 @@
      <rect>
       <x>470</x>
       <y>60</y>
-      <width>161</width>
+      <width>181</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Browse for Folder</string>
+     <string>Browse for Download Folder</string>
     </property>
    </widget>
    <widget class="QPushButton" name="download_button">
@@ -78,7 +81,7 @@
      <rect>
       <x>470</x>
       <y>530</y>
-      <width>141</width>
+      <width>181</width>
       <height>61</height>
      </rect>
     </property>
@@ -90,57 +93,45 @@
     <property name="geometry">
      <rect>
       <x>470</x>
-      <y>110</y>
-      <width>71</width>
+      <y>130</y>
+      <width>181</width>
       <height>31</height>
      </rect>
     </property>
     <property name="acceptDrops">
      <bool>true</bool>
     </property>
+    <property name="currentText">
+     <string>BEST</string>
+    </property>
     <item>
      <property name="text">
-      <string>.mp4</string>
+      <string>BEST</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>.mp3</string>
+      <string>mp4</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>.aac</string>
+      <string>flv</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>.flv</string>
+      <string>ogg</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>.m4a</string>
+      <string>webm</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>.ogg</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>.wav</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>.webm</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>.3gp</string>
+      <string>3gp</string>
      </property>
     </item>
    </widget>
@@ -149,7 +140,7 @@
      <rect>
       <x>470</x>
       <y>500</y>
-      <width>141</width>
+      <width>181</width>
       <height>21</height>
      </rect>
     </property>
@@ -164,9 +155,9 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>210</y>
+      <y>220</y>
       <width>421</width>
-      <height>381</height>
+      <height>371</height>
      </rect>
     </property>
     <property name="font">
@@ -192,32 +183,19 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>10</y>
+        <y>310</y>
         <width>70</width>
         <height>17</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Update</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="ignore_errors_checkBox">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>30</y>
-        <width>91</width>
-        <height>17</height>
-       </rect>
-      </property>
       <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Ignore download and postprocessing errors. The download will be considered successful even if the postprocessing fails&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Update this program to latest version&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="whatsThis">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Ignore download and postprocessing errors. The download will be considered successful even if the postprocessing fails&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Update this program to latest version&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="text">
-       <string>Ignore Errors</string>
+       <string>Update</string>
       </property>
      </widget>
      <widget class="QCheckBox" name="stop_on_error_checkBox">
@@ -228,6 +206,12 @@
         <width>131</width>
         <height>17</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Abort downloading of further videos if an error occurs (Alias: --no-ignore-errors)&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Abort downloading of further videos if an error occurs (Alias: --no-ignore-errors)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="text">
        <string>STOP in case of error</string>
@@ -242,6 +226,12 @@
         <height>17</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Force extraction to use the generic extractor&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Force extraction to use the generic extractor&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
       <property name="text">
        <string>Force Generic Extractor</string>
       </property>
@@ -250,10 +240,16 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>90</y>
+        <y>30</y>
         <width>191</width>
         <height>17</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Don't load any more configuration files except those given by --config-locations. For backward compatibility, if this option is found inside the system configuration file, the user configuration is not loaded. (Alias: --no-config)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Don't load any more configuration files except those given by --config-locations. For backward compatibility, if this option is found inside the system configuration file, the user configuration is not loaded. (Alias: --no-config)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="text">
        <string>Ignore Config Files except default</string>
@@ -263,10 +259,16 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>110</y>
+        <y>10</y>
         <width>131</width>
         <height>17</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Do not load any custom configuration files (default). When given inside a configuration file, ignore all previous --config-locations defined in the current file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Do not load any custom configuration files (default). When given inside a configuration file, ignore all previous --config-locations defined in the current file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
       <property name="text">
        <string>Ignore ALL config files</string>
@@ -275,37 +277,11 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QToolButton" name="add_config_file_button">
+     <widget class="QCheckBox" name="list_playlist_contents_only_checkBox">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>130</y>
-        <width>21</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>...</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="add_config_label">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>130</y>
-        <width>111</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add config location</string>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="list_contents_only_checkBox">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>160</y>
+        <y>90</y>
         <width>191</width>
         <height>17</height>
        </rect>
@@ -314,27 +290,11 @@
        <string>List playlist contents ONLY (no dl)</string>
       </property>
      </widget>
-     <widget class="QCheckBox" name="extract_playlist_items_checkBox">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>180</y>
-        <width>151</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Extract Playlist items</string>
-      </property>
-      <property name="checked">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QCheckBox" name="livestreams_from_start_checkBox">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>200</y>
+        <y>110</y>
         <width>181</width>
         <height>17</height>
        </rect>
@@ -347,7 +307,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>220</y>
+        <y>130</y>
         <width>161</width>
         <height>17</height>
        </rect>
@@ -360,7 +320,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>240</y>
+        <y>150</y>
         <width>121</width>
         <height>17</height>
        </rect>
@@ -373,7 +333,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>260</y>
+        <y>290</y>
         <width>151</width>
         <height>17</height>
        </rect>
@@ -387,19 +347,6 @@
      <attribute name="title">
       <string>Net/Geo</string>
      </attribute>
-     <widget class="QCheckBox" name="proxy_checkBox">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>70</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Proxy</string>
-      </property>
-     </widget>
      <widget class="QLineEdit" name="proxy_url_input">
       <property name="geometry">
        <rect>
@@ -589,6 +536,19 @@
       </property>
       <property name="text">
        <string>Geo Bypass IP Block</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="proxy_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Proxy</string>
       </property>
      </widget>
     </widget>
@@ -857,7 +817,7 @@
        <rect>
         <x>110</x>
         <y>10</y>
-        <width>291</width>
+        <width>281</width>
         <height>20</height>
        </rect>
       </property>
@@ -905,7 +865,7 @@
        <rect>
         <x>110</x>
         <y>40</y>
-        <width>291</width>
+        <width>281</width>
         <height>20</height>
        </rect>
       </property>
@@ -937,7 +897,7 @@
        <rect>
         <x>110</x>
         <y>70</y>
-        <width>291</width>
+        <width>281</width>
         <height>20</height>
        </rect>
       </property>
@@ -947,7 +907,7 @@
        <rect>
         <x>110</x>
         <y>160</y>
-        <width>291</width>
+        <width>281</width>
         <height>20</height>
        </rect>
       </property>
@@ -1014,7 +974,7 @@
        <rect>
         <x>110</x>
         <y>130</y>
-        <width>291</width>
+        <width>281</width>
         <height>20</height>
        </rect>
       </property>
@@ -1024,9 +984,129 @@
        <rect>
         <x>110</x>
         <y>100</y>
-        <width>291</width>
+        <width>281</width>
         <height>20</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QScrollBar" name="verticalScrollBar">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>0</y>
+        <width>20</width>
+        <height>341</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="utilities_tab">
+     <attribute name="title">
+      <string>Utilities</string>
+     </attribute>
+     <widget class="QPushButton" name="check_filetypes_button">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>91</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Check Filetypes</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="restart_button">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>300</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(255, 0, 0);
+selection-color: rgb(255, 255, 255);
+selection-background-color: rgb(255, 255, 0);</string>
+      </property>
+      <property name="text">
+       <string>RESTART APP</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="save_urls_button">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>75</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save URL's</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="load_urls_button">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>75</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Load URL's</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_config_file_button_2">
+      <property name="geometry">
+       <rect>
+        <x>304</x>
+        <y>10</y>
+        <width>101</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Load Config File</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="config_label">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>60</y>
+        <width>241</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Add configuration file location with above button</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="test_button">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>180</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>test_button</string>
       </property>
      </widget>
     </widget>
@@ -1049,13 +1129,89 @@
      <string>Please Select a Folder:</string>
     </property>
    </widget>
+   <widget class="QCheckBox" name="audio_only_checkbox">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>160</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <underline>true</underline>
+     </font>
+    </property>
+    <property name="text">
+     <string>AUDIO ONLY</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="filetype_label">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>110</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Please Select a Filetype:</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="audio_quality_slider">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>220</y>
+      <width>181</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>10</number>
+    </property>
+    <property name="value">
+     <number>5</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="audio_quality_label">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>190</y>
+      <width>151</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Audio Quality (Left = Better)</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="status_label">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>480</y>
+      <width>141</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0 of 0 done.</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>650</width>
+     <width>675</width>
      <height>21</height>
     </rect>
    </property>
