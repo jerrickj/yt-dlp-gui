@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>675</width>
-    <height>650</height>
+    <width>695</width>
+    <height>658</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -66,7 +66,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent</string>
     </property>
     <property name="text">
      <string>Input URL's separated by a comma:</string>
@@ -114,7 +114,8 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: rgba(255, 0, 0, 0.4);
+opacity: 0;</string>
     </property>
     <property name="currentText">
      <string>BEST</string>
@@ -1144,7 +1145,7 @@ selection-background-color: rgb(255, 255, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent</string>
     </property>
     <property name="text">
      <string>Please Select a Folder:</string>
@@ -1165,7 +1166,7 @@ selection-background-color: rgb(255, 255, 0);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent;</string>
     </property>
     <property name="text">
      <string>AUDIO ONLY</string>
@@ -1181,7 +1182,7 @@ selection-background-color: rgb(255, 255, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent</string>
     </property>
     <property name="text">
      <string>Please Select a Filetype:</string>
@@ -1196,6 +1197,9 @@ selection-background-color: rgb(255, 255, 0);</string>
       <height>22</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent</string>
+    </property>
     <property name="maximum">
      <number>10</number>
     </property>
@@ -1209,14 +1213,14 @@ selection-background-color: rgb(255, 255, 0);</string>
    <widget class="QLabel" name="audio_quality_label">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>480</x>
       <y>190</y>
-      <width>151</width>
-      <height>20</height>
+      <width>161</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent;</string>
     </property>
     <property name="text">
      <string>Audio Quality (Left = Better)</string>
@@ -1232,7 +1236,8 @@ selection-background-color: rgb(255, 255, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent;
+font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
      <string>0 of 0 done.</string>
@@ -1244,7 +1249,7 @@ selection-background-color: rgb(255, 255, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>675</width>
+     <width>695</width>
      <height>21</height>
     </rect>
    </property>

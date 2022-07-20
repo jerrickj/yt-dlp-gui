@@ -8,3 +8,5 @@ pyuic5 -x filename.ui -o filename.py
 d:
 cd git/yt-dlp-gui
 pyuic5 -x yt_dlp_gui.ui -o yt_dlp_gui.py
+
+pyuic5 -x yt_dlp_gui_zero.ui -o yt_dlp_gui_zero.py

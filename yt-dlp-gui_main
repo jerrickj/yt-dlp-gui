@@ -1,4 +1,4 @@
-from yt_dlp_gui import Ui_MainWindow
+from yt_dlp_gui_zero import Ui_MainWindow
 
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore

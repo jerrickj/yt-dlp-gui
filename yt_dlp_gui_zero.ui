@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>675</width>
-    <height>650</height>
+    <width>695</width>
+    <height>658</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -29,7 +29,8 @@
    <string>Youtube Downloader</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+   <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+color: rgb(255, 255, 255);</string>
   </property>
   <property name="tabShape">
    <enum>QTabWidget::Rounded</enum>
@@ -45,7 +46,9 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(156, 156, 156, 255), stop:0.778409 rgba(255, 255, 255, 255));
+border-color: rgb(0, 0, 0);
+color: rgb(0, 0, 0);</string>
     </property>
     <property name="plainText">
      <string/>
@@ -66,7 +69,8 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent;
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Input URL's separated by a comma:</string>
@@ -82,7 +86,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: rgb(190, 190,190);
+color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>Browse for Download Folder</string>
@@ -96,6 +101,10 @@
       <width>181</width>
       <height>61</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 15pt &quot;Comic Sans MS&quot;;
+background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
     </property>
     <property name="text">
      <string>Download</string>
@@ -114,7 +123,11 @@
      <bool>true</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: rgba(0, 0, 0, 0.4);
+border-color: rgb(0, 0, 0);
+opacity: 0;
+border-top-color: rgb(0, 0, 0);
+border-right-color: rgb(0, 0, 0);</string>
     </property>
     <property name="currentText">
      <string>BEST</string>
@@ -159,6 +172,9 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);</string>
+    </property>
     <property name="value">
      <number>0</number>
     </property>
@@ -188,7 +204,8 @@
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190, 190);</string>
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+color: rgb(0, 0, 0);</string>
     </property>
     <property name="currentIndex">
      <number>0</number>
@@ -212,6 +229,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Update this program to latest version&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Update</string>
       </property>
@@ -230,6 +250,9 @@
       </property>
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Abort downloading of further videos if an error occurs (Alias: --no-ignore-errors)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>STOP in case of error</string>
@@ -250,6 +273,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Force extraction to use the generic extractor&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Force Generic Extractor</string>
       </property>
@@ -268,6 +294,9 @@
       </property>
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Don't load any more configuration files except those given by --config-locations. For backward compatibility, if this option is found inside the system configuration file, the user configuration is not loaded. (Alias: --no-config)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Ignore Config Files except default</string>
@@ -288,6 +317,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Do not load any custom configuration files (default). When given inside a configuration file, ignore all previous --config-locations defined in the current file&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Ignore ALL config files</string>
       </property>
@@ -304,6 +336,9 @@
         <height>17</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>List playlist contents ONLY (no dl)</string>
       </property>
@@ -316,6 +351,9 @@
         <width>181</width>
         <height>17</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Download Livestreams from start</string>
@@ -330,6 +368,9 @@
         <height>17</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Wait for Scheduled streams</string>
       </property>
@@ -343,6 +384,9 @@
         <height>17</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Mark Video Watched</string>
       </property>
@@ -355,6 +399,9 @@
         <width>151</width>
         <height>17</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Do not output color codes</string>
@@ -400,6 +447,9 @@
         <height>16</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Timeout Seconds</string>
       </property>
@@ -418,6 +468,9 @@
       </property>
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Client-side IP address to bind to&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>IP</string>
@@ -442,6 +495,9 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Force IPv4</string>
       </property>
@@ -454,6 +510,9 @@
         <width>70</width>
         <height>17</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Force IPv6</string>
@@ -478,6 +537,9 @@
         <height>16</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Geo Verification Proxy URL</string>
       </property>
@@ -496,6 +558,9 @@
       </property>
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Bypass geographic restriction via faking X-Forwarded-For HTTP header (default)&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Geo Bypass</string>
@@ -522,6 +587,9 @@
         <width>131</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Geo Bypass Country Code</string>
@@ -552,6 +620,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Force bypass geographic restriction with explicitly provided IP block in CIDR notation&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Geo Bypass IP Block</string>
       </property>
@@ -564,6 +635,9 @@
         <width>91</width>
         <height>16</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Proxy</string>
@@ -649,6 +723,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Comma separated playlist_index of the videos to download. You can specify a range using &amp;quot;[START]:[STOP][:STEP]&amp;quot;. For backward compatibility, START-STOP is also supported. Use negative indices to count from the right and negative STEP to download in reverse order. Eg: &amp;quot;-I 1:3,7,-5::2&amp;quot; used on a playlist of size 15 will download the videos at index 1,2,3,7,11,13,15&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Playlist Items</string>
       </property>
@@ -667,6 +744,10 @@
       </property>
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Do not download any videos smaller than SIZE (e.g. 50k or 44.6m)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+</string>
       </property>
       <property name="text">
        <string>Minimum Filesize</string>
@@ -687,6 +768,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Do not download any videos larger than SIZE (e.g. 50k or 44.6m)&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Maximum Filesize</string>
       </property>
@@ -705,6 +789,9 @@
       </property>
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Download only videos uploaded on this date. The date can be &amp;quot;YYYYMMDD&amp;quot; or in the format  [now|today|yesterday][-N[day|week|month|year]]. Eg: --date today-2weeks&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Specific Date </string>
@@ -725,6 +812,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Download only videos uploaded on or before this date. The date formats accepted is the same as &amp;quot;Specific Date&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Before Date</string>
       </property>
@@ -744,6 +834,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Download only videos uploaded on or after this date. The date formats accepted is the same as &amp;quot;Specific Date&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>After Date</string>
       </property>
@@ -762,6 +855,9 @@
       </property>
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Generic video filter. Any &amp;quot;OUTPUT TEMPLATE&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                field can be compared with a number or a&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                string using the operators defined in&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                &amp;quot;Filtering formats&amp;quot;. You can also simply&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                specify a field to match if the field is&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                present, use &amp;quot;!field&amp;quot; to check if the field&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                is not present, and &amp;quot;&amp;amp;&amp;quot; to check multiple&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                conditions. Use a &amp;quot;\&amp;quot; to escape &amp;quot;&amp;amp;&amp;quot; or&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                quotes if needed. If used multiple times,&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                the filter matches if atleast one of the&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                conditions are met. Eg: --match-filter&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                !is_live --match-filter &amp;quot;like_count&amp;gt;?100 &amp;amp;&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                description~='(?i)\bcats \&amp;amp; dogs\b'&amp;quot; matches&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                only videos that are not live OR those that&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                have a like count more than 100 (or the like&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                field is not available) and also has a&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                description that contains the phrase &amp;quot;cats &amp;amp;&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                dogs&amp;quot; (caseless). Use &amp;quot;--match-filter -&amp;quot; to&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                interactively ask whether to download each&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                video&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Filters</string>
@@ -821,6 +917,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Download only videos suitable for the given age&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Age Limit</string>
       </property>
@@ -855,6 +954,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Maximum download rate in bytes per second (e.g. 50K or 4.2M)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Max Download Rate</string>
       </property>
@@ -873,6 +975,9 @@
       </property>
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Number of retries (default is 10), or &amp;quot;infinite&amp;quot;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Retries</string>
@@ -905,6 +1010,9 @@
       </property>
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Comma separated playlist_index of the videos to download. You can specify a range using &amp;quot;[START]:[STOP][:STEP]&amp;quot;. For backward compatibility, START-STOP is also supported. Use negative indices to count from the right and negative STEP to download in reverse order. Eg: &amp;quot;-I 1:3,7,-5::2&amp;quot; used on a playlist of size 15 will download the videos at index 1,2,3,7,11,13,15&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Max Download Rate</string>
@@ -945,6 +1053,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Comma separated playlist_index of the videos to download. You can specify a range using &amp;quot;[START]:[STOP][:STEP]&amp;quot;. For backward compatibility, START-STOP is also supported. Use negative indices to count from the right and negative STEP to download in reverse order. Eg: &amp;quot;-I 1:3,7,-5::2&amp;quot; used on a playlist of size 15 will download the videos at index 1,2,3,7,11,13,15&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Max Download Rate</string>
       </property>
@@ -964,6 +1075,9 @@
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Comma separated playlist_index of the videos to download. You can specify a range using &amp;quot;[START]:[STOP][:STEP]&amp;quot;. For backward compatibility, START-STOP is also supported. Use negative indices to count from the right and negative STEP to download in reverse order. Eg: &amp;quot;-I 1:3,7,-5::2&amp;quot; used on a playlist of size 15 will download the videos at index 1,2,3,7,11,13,15&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
       <property name="text">
        <string>Max Download Rate</string>
       </property>
@@ -982,6 +1096,9 @@
       </property>
       <property name="whatsThis">
        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Comma separated playlist_index of the videos to download. You can specify a range using &amp;quot;[START]:[STOP][:STEP]&amp;quot;. For backward compatibility, START-STOP is also supported. Use negative indices to count from the right and negative STEP to download in reverse order. Eg: &amp;quot;-I 1:3,7,-5::2&amp;quot; used on a playlist of size 15 will download the videos at index 1,2,3,7,11,13,15&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
       </property>
       <property name="text">
        <string>Max Download Rate</string>
@@ -1034,6 +1151,9 @@
         <height>21</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
       <property name="text">
        <string>Check Filetypes</string>
       </property>
@@ -1071,6 +1191,9 @@ selection-background-color: rgb(255, 255, 0);</string>
         <height>21</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
       <property name="text">
        <string>Save URL's</string>
       </property>
@@ -1083,6 +1206,9 @@ selection-background-color: rgb(255, 255, 0);</string>
         <width>75</width>
         <height>21</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
       </property>
       <property name="text">
        <string>Load URL's</string>
@@ -1097,6 +1223,9 @@ selection-background-color: rgb(255, 255, 0);</string>
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
       <property name="text">
        <string>Load Config File</string>
       </property>
@@ -1110,6 +1239,10 @@ selection-background-color: rgb(255, 255, 0);</string>
         <height>21</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(255, 255, 255);</string>
+      </property>
       <property name="text">
        <string>Add configuration file location with above button</string>
       </property>
@@ -1117,11 +1250,14 @@ selection-background-color: rgb(255, 255, 0);</string>
      <widget class="QPushButton" name="test_button">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>180</y>
+        <x>320</x>
+        <y>140</y>
         <width>75</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
       </property>
       <property name="text">
        <string>test_button</string>
@@ -1144,7 +1280,8 @@ selection-background-color: rgb(255, 255, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>Please Select a Folder:</string>
@@ -1165,7 +1302,8 @@ selection-background-color: rgb(255, 255, 0);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>AUDIO ONLY</string>
@@ -1181,7 +1319,8 @@ selection-background-color: rgb(255, 255, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>Please Select a Filetype:</string>
@@ -1196,6 +1335,9 @@ selection-background-color: rgb(255, 255, 0);</string>
       <height>22</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent</string>
+    </property>
     <property name="maximum">
      <number>10</number>
     </property>
@@ -1209,14 +1351,15 @@ selection-background-color: rgb(255, 255, 0);</string>
    <widget class="QLabel" name="audio_quality_label">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>480</x>
       <y>190</y>
-      <width>151</width>
-      <height>20</height>
+      <width>161</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>Audio Quality (Left = Better)</string>
@@ -1232,7 +1375,9 @@ selection-background-color: rgb(255, 255, 0);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(190, 190,190);</string>
+     <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);
+font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
      <string>0 of 0 done.</string>
@@ -1244,7 +1389,7 @@ selection-background-color: rgb(255, 255, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>675</width>
+     <width>695</width>
      <height>21</height>
     </rect>
    </property>
