@@ -9,15 +9,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>739</width>
-    <height>707</height>
+    <width>702</width>
+    <height>650</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>400</width>
-    <height>400</height>
-   </size>
   </property>
   <property name="mouseTracking">
    <bool>true</bool>
@@ -69,7 +63,7 @@ color: rgb(0, 0, 0);</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>310</y>
+          <y>190</y>
           <width>70</width>
           <height>17</height>
          </rect>
@@ -246,7 +240,7 @@ color: rgb(0, 0, 0);</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>290</y>
+          <y>170</y>
           <width>151</width>
           <height>17</height>
          </rect>
@@ -1058,7 +1052,7 @@ background-color: rgb(190, 190, 190);</string>
        <widget class="QPushButton" name="add_config_file_button_2">
         <property name="geometry">
          <rect>
-          <x>304</x>
+          <x>210</x>
           <y>10</y>
           <width>101</width>
           <height>41</height>
@@ -1075,9 +1069,9 @@ background-color: rgb(190, 190, 190);</string>
        <widget class="QLabel" name="config_label">
         <property name="geometry">
          <rect>
-          <x>160</x>
+          <x>110</x>
           <y>60</y>
-          <width>241</width>
+          <width>211</width>
           <height>21</height>
          </rect>
         </property>
@@ -1086,14 +1080,14 @@ background-color: rgb(190, 190, 190);</string>
 color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>Add configuration file location with above button</string>
+         <string>Config location will be displayed here </string>
         </property>
        </widget>
        <widget class="QPushButton" name="test_button">
         <property name="geometry">
          <rect>
-          <x>320</x>
-          <y>140</y>
+          <x>10</x>
+          <y>120</y>
           <width>75</width>
           <height>23</height>
          </rect>
@@ -1125,6 +1119,17 @@ color: rgb(0, 0, 0);</string>
       </property>
      </widget>
     </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="browse_folder_button">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(190, 190,190);
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Browse for Download Folder</string>
+      </property>
+     </widget>
+    </item>
     <item row="5" column="1">
      <widget class="QCheckBox" name="audio_only_checkbox">
       <property name="font">
@@ -1141,15 +1146,16 @@ color: rgb(0, 0, 0);</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0" rowspan="6">
-     <widget class="QPlainTextEdit" name="url_input">
-      <property name="styleSheet">
-       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(156, 156, 156, 255), stop:0.778409 rgba(255, 255, 255, 255));
-border-color: rgb(0, 0, 0);
-color: rgb(0, 0, 0);</string>
+    <item row="8" column="2">
+     <widget class="QScrollBar" name="status_label_verticalScrollBar">
+      <property name="mouseTracking">
+       <bool>true</bool>
       </property>
-      <property name="plainText">
-       <string/>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
       </property>
      </widget>
     </item>
@@ -1174,22 +1180,11 @@ color: rgb(0, 0, 0);</string>
       </property>
      </widget>
     </item>
-    <item row="8" column="1">
-     <widget class="QTextEdit" name="advanced_status_label">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
+    <item row="1" column="0" rowspan="6">
+     <widget class="QPlainTextEdit" name="url_input">
       <property name="styleSheet">
-       <string notr="true">background-color: transparent;
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(156, 156, 156, 255), stop:0.778409 rgba(255, 255, 255, 255));
+border-color: rgb(0, 0, 0);
 color: rgb(0, 0, 0);</string>
       </property>
      </widget>
@@ -1207,17 +1202,6 @@ color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string>Input URL's separated by a comma:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="browse_folder_button">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(190, 190,190);
-color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string>Browse for Download Folder</string>
       </property>
      </widget>
     </item>
@@ -1306,7 +1290,7 @@ color: rgb(0, 0, 0);
 font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
       </property>
       <property name="text">
-       <string>Input URLS in top-left box.</string>
+       <string/>
       </property>
      </widget>
     </item>
@@ -1321,13 +1305,23 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb
       </property>
      </widget>
     </item>
-    <item row="8" column="2">
-     <widget class="QScrollBar" name="status_label_verticalScrollBar">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0);</string>
+    <item row="8" column="1">
+     <widget class="QTextBrowser" name="advanced_status_label">
+      <property name="enabled">
+       <bool>true</bool>
       </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>8</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);</string>
       </property>
      </widget>
     </item>
@@ -1338,7 +1332,7 @@ background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>739</width>
+     <width>702</width>
      <height>21</height>
     </rect>
    </property>
