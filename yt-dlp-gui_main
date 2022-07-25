@@ -1,16 +1,15 @@
+# From [current UI savefile] import Ui_MainWindow allows the GIU to be used and updated independently
 from yt_dlp_gui_v_two import Ui_MainWindow
+# For the GUI to work, you need to import the PyQt5 modules.
+from PyQt5 import QtWidgets, QtCore, QtGui, QtWidgets
 
-from PyQt5 import QtWidgets
-from PyQt5 import QtCore
-from PyQt5 import QtGui
-import subprocess
 import sys
-import tempfile
-from timeit import default_timer as timer 
+import subprocess # Used to run YT-DLP as a subprocess within the GUI
+import tempfile  # Used to create a temporary file for the Save URL's output
+from timeit import default_timer as timer # Timer function to calculate the time taken to download the videos
 
 # https://www.youtube.com/watch?v=XXPNpdaK9WA
 # https://github.com/yt-dlp/yt-dlp#installation
-
 
 class MainWindow(QtWidgets.QMainWindow):
 
@@ -20,33 +19,56 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.setupUi(self)
         self.show()
         self.ui.test_button.clicked.connect(self.error_dialog)
-        self.ui.advanced_status_label.setVerticalScrollBar(self.ui.status_label_verticalScrollBar)
+        self.ui.status_label.setVerticalScrollBar(self.ui.status_label_verticalScrollBar)
 
-    def status_display(self, text_to_add):
-        previous_text = self.ui.advanced_status_label.toPlainText()
-        current_text = previous_text + "\n" + text_to_add
-        self.ui.advanced_status_label.setText(current_text)
-        self.ui.advanced_status_label.moveCursor(QtGui.QTextCursor.End)
-    
-    def error_dialog(self, title = "Error", message = "Error", extra_info = ""):
+        self.download_path = ""
+        self.option_output = ""
+        self.remux_filetypes = ["mp4", "mkv", "flv", "webm", "mov", "avi", "mka", "ogg", "mp3", "aac", "m4a", "opus", "vorbis", "flac", "alac", "wav"]
+
+    class error_dialog(QtWidgets.QDialog): # Create a class that Error Dialogs can inherit from
         # Display an error dialog
-        self.error_dialog = QtWidgets.QMessageBox()
-        self.error_dialog.setWindowTitle(f"{title}")
-        self.error_dialog.setText(f"{message} \n")
-        self.error_dialog.setInformativeText(extra_info)
-        self.error_dialog.setStandardButtons(QtWidgets.QMessageBox.Ok)
-        self.error_dialog.exec_()
+        def __init__(self, title = "Error", message = "Error", extra_info = "Please check your inputs and try again."):
+            super().__init__()
+            self.error_dialog = QtWidgets.QMessageBox()
+            self.error_dialog.setWindowTitle(f"{title}")
+            self.error_dialog.setText(f"{message} \n")
+            self.error_dialog.setInformativeText(extra_info)
+            self.error_dialog.setStandardButtons(QtWidgets.QMessageBox.Ok)
+            self.error_dialog.setIcon(QtWidgets.QMessageBox.Information) # Error, Question, Warning, Information, Critical
+            self.error_dialog.exec_()
 
-    def truncate(self, n, decimals=3): # truncate n to 3 decimal places
+    class restart_with_warning(QtWidgets.QDialog):
+        def __init__(self, title = "Restarting...", message = "Are you sure you want to restart?", extra_info = "This will close the application. Unsaved data and settings will be lost."):
+            super().__init__()
+            self.restart_popup = QtWidgets.QMessageBox()
+            self.restart_popup.setWindowTitle(f"{title}")
+            self.restart_popup.setText(f"{message} \n")
+            self.restart_popup.setInformativeText(extra_info)
+            self.restart_popup.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
+            self.restart_popup.setDefaultButton(QtWidgets.QMessageBox.Cancel)
+            self.restart_popup.setIcon(QtWidgets.QMessageBox.Warning) # Error, Question, Warning, Information, Critical
+            self.restart_popup.buttonClicked.connect(self.restart_popup_clicked)
+            self.restart_popup.exec_()
+
+        def restart_popup_clicked(self, i):
+            self.i = i
+            if i.text() == "OK":
+            #def restart(self): # This is the function that actually restarts the program
+                QtCore.QCoreApplication.quit()
+                QtCore.QProcess.startDetached(sys.executable, sys.argv)
+            else:
+                pass
+
+    def update_status_display(self, text_to_add):
+        previous_text = self.ui.status_label.toPlainText()
+        current_text = previous_text + "\n" + text_to_add
+        self.ui.status_label.setText(current_text)
+        self.ui.status_label.moveCursor(QtGui.QTextCursor.End)
+
+    def truncate(self, input, decimals=3): # shorten input to 3 decimal places
         multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
+        return int(input * multiplier) / multiplier
     
-    def popup_clicked(self, i):
-        if i.text() == "OK":
-            self.restart()
-        else:
-            pass
-
     @QtCore.pyqtSlot()
     def on_browse_folder_button_clicked(self):
         # open a file browser to select a folder
@@ -92,96 +114,9 @@ class MainWindow(QtWidgets.QMainWindow):
         return
 
     @QtCore.pyqtSlot()
-    def on_download_button_clicked(self):
-        # download the video
-        
-        # Check if the folder path is valid
-        try:
-            if len(self.download_path) < 3:
-                self.status_display("Download Folder: No Folder Selected")
-                self.status_display("Download Failed")
-                return
-            else:
-                #self.ui.download_button.setEnabled(False)
-                self.status_display("Filetype: " + self.ui.filetype_dropdown.currentText())
-                #self.ui.download_button.setEnabled(False)
-                self.status_display("Download Folder: " + self.download_path)
-            
-        except AttributeError:
-            self.status_display("Attribute Error")
-            self.status_display("Download Folder: No Folder Selected")
-            #self.error_dialog("NO FOLDER!", "Please select a download folder.")
-            #raise Exception("No download folder selected.")
-            return
-
-        # Check if the URL is valid
-        try:
-            urls = self.url_parser() 
-            if len(urls) == 0:
-                self.status_display("No URLs Entered")
-                self.status_display("Download Failed")
-                return  
-
-            else:
-                url_count = 0
-                url_range = len(urls)
-                
-                # START MY TIMER
-                start = timer()
-
-                for url in urls:
-                    title_per_url = 0 
-                    url_count += 1
-                    self.status_display("Downloading URL " + str(url_count) + " of " + str(url_range))
-                    options = self.option_compiler()
-                    command = "yt-dlp " + options + url
-
-                    #print('Currently Downloading: ' + url)
-                    try:
-                        self.ui.status_label.setText(f"Downloading {url_count} of {url_range}")
-                        self.ui.status_label.repaint()
-                        proc = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
-                        #self.status_display(f"Downloading URL {url_count} of {url_range}: " + "\n  " + url)
-
-                        #update progress bar
-                        for i in proc.stdout:
-                            if "Destination" in i and title_per_url < 1:
-                                i = i.split("Destination: ")[1]
-                                i = i[len(self.output_path) + 1:]
-                                self.status_display(f"Title: {i}")
-                                title_per_url += 1
-
-                            if "%" in i: 
-                                i = i.split("[download]")[1]
-                                i = i.split("%")[0] 
-                                i = i.strip(" ")
-                                #print(i + "%")
-                                self.ui.progressBar.setProperty("value", float(i))
-                                self.ui.progressBar.repaint() 
-                                #proc.wait()
-
-                        proc.wait()
-                    except KeyboardInterrupt:
-                        self.status_display("Keyboard Interrupt")
-                        print("Keyboard Interrupt")
-                        break
-
-                    # STOP MY TIMER
-                    elapsed_time = timer() - start # in seconds
-                    elapsed_time = self.truncate(elapsed_time) 
-                    self.ui.status_label.setText(f"Completed {url_count} of {url_range} downloads in {elapsed_time} seconds")
-                    #self.ui.status_label.repaint() 
-                    self.status_display("  Download Complete")
-        except Exception as e:
-            self.status_display("Error")
-            self.status_display("Download Failed")
-            self.error_dialog("Error", "Download Failed", str(e))
-            return
-    
-    @QtCore.pyqtSlot()
     def on_audio_only_checkbox_clicked(self):
         if self.ui.audio_only_checkbox.isChecked():
-            self.status_display("Audio Only: Enabled")
+            self.update_status_display("Audio Only: Enabled")
             #self.ui.filetype_dropdown.setEnabled(False)
             self.ui.filetype_dropdown.setCurrentText("BEST")
             self.ui.filetype_dropdown.addItem("")
@@ -196,7 +131,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.audio_quality_slider.setEnabled(True)
             
         else:
-            self.status_display("Audio Only: Disabled")
+            self.update_status_display("Audio Only: Disabled")
             #self.ui.filetype_dropdown.setEnabled(True)
             self.ui.filetype_dropdown.setCurrentText("BEST")
             self.ui.filetype_dropdown.setItemText(1, "mp4")
@@ -208,6 +143,95 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.filetype_dropdown.removeItem(6)
             self.ui.audio_quality_slider.setEnabled(False)
 
+    @QtCore.pyqtSlot()
+    def on_download_button_clicked(self):
+        try: 
+            urls = self.url_parser() # Get the URLs from the input
+            # Check if both the download folder and the URL strings are empty
+            if len(self.download_path) == 0 and len(urls) == 0:
+                self.update_status_display("Download Folder: No Folder Selected")
+                self.update_status_display("Download Failed")
+                self.error_dialog("Error", "No URL or Save Folder Entered", "Please enter at least one URL and specify the download folder")
+                return
+            # Check if the download path string is empty
+            if len(self.download_path) == 0:
+                self.update_status_display("Download Folder: No Folder Selected")
+                self.update_status_display("Download Failed")
+                self.error_dialog("Error", "No Download Path Selected", "Please select a download folder")
+                return
+            # Check if the URL string is empty # Check that there is at least one URL
+            if len(urls) == 0:
+                self.update_status_display("Download Folder: " + self.download_path)
+                self.update_status_display("Download Failed")
+                self.error_dialog("Error", "No URL Entered", "Please enter at least one URL")
+                return
+            
+            else:
+                # If no problems, update the status display with selected options, filetype and download folder
+                self.update_status_display(f"Current Options: {self.option_output}")
+                self.update_status_display("Filetype: " + self.ui.filetype_dropdown.currentText())
+                self.update_status_display("Download Folder: " + self.download_path)
+
+                url_count = 0
+                url_range = len(urls)
+                
+                # Start Download Timer
+                start = timer()
+
+                for url in urls:
+                    title_count_per_url = 0 
+                    url_count += 1
+                    self.update_status_display(f"Downloading URL {str(url_count)} of {str(url_range)}: {url}")
+                    options = self.option_compiler()
+                    command = "yt-dlp " + options + url
+                    
+                    # Update label above progress bar with current URL number out of total URLs
+                    self.ui.progress_label.setText(f"Downloading {url_count} of {url_range}")
+                    self.ui.progress_label.repaint()
+                    proc = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+                    #self.update_status_display(f"Downloading URL {url_count} of {url_range}: " + "\n  " + url)
+
+                    #update progress bar
+                    for i in proc.stdout:
+                        if "Destination:" in i and title_count_per_url < 1:
+                            i = i.split("Destination: ")[1]
+                            i = i[len(self.output_path) + 1:]
+                            self.update_status_display(f"Title: {i}")
+                            title_count_per_url += 1
+                        if "%" in i: 
+                            i = i.split("[download]")[1]
+                            i = i.split("%")[0] 
+                            i = i.strip(" ")
+                            self.ui.progressBar.setProperty("value", float(i))
+                            self.ui.progressBar.repaint()
+
+                    #proc.wait()
+                    proc.kill()
+
+                    # Stop Download Timer (output in seconds)
+                    elapsed_time = timer() - start 
+                    elapsed_time = self.truncate(elapsed_time) # shorten to 3 decimal places
+
+                    # Display elapsed time and comletion messages
+                    self.ui.progress_label.setText(f"Completed {url_count} of {url_range} downloads in {elapsed_time} seconds")
+                    self.update_status_display("Download Complete")
+                    self.update_status_display(f"Download Time: {elapsed_time} seconds")
+                    
+                    # Reset the progress bar
+                    self.ui.progressBar.setProperty("value", 0)
+
+        except AttributeError as a:
+            self.update_status_display("Download Folder: No Folder Selected")
+            self.update_status_display("Download Failed; Attribute Error")
+            self.update_status_display(str(a))
+            self.error_dialog("Error", "Attribute Error", str(a))
+        
+        except Exception as e:
+            self.update_status_display("Error")
+            self.update_status_display("Download Failed")
+            self.update_status_display(str(e))
+            self.error_dialog("Error", "Error", str(e))
+    
     def url_parser(self):
         # check if the url is valid, whether or not it's a playlist, and format it accordingly
         self.legal_characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;="
@@ -222,89 +246,86 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.urls.remove(url)
             for char in url:
                 if char not in self.legal_characters:
-                    self.status_display("Invalid URL: " + url)
-                    self.status_display("Invalid Characters in URL: " + char)
+                    self.update_status_display("Invalid URL: " + url)
+                    self.update_status_display("Invalid Characters in URL: " + char)
 
                     self.urls.strip(url)
-                    self.status_display("URL Removed")
+                    self.update_status_display("URL Removed")
                     break
         return self.urls
 
-    def option_compiler(self):
-        # compile the users options into a string
+    def option_compiler(self): # compile the users options into a string
         
-        self.output = ""
-
         # General Tab
         if self.ui.ignore_all_config_files_checkBox.isChecked():
-            #self.output += "--no-config-locations "
+            #self.option_option_output += "--no-config-locations "
             pass
         if self.ui.ignore_config_except_default_checkBox.isChecked():
-            self.output = self.output + "--ignore-config "
+            self.option_output += "--ignore-config "
         if self.ui.stop_on_error_checkBox.isChecked():
-            self.output += "--abort-on-error "
+            self.option_output += "--abort-on-error "
         if self.ui.force_generic_extractor_checkBox.isChecked():
-            self.output += "--force-generic-extractor "
+            self.option_output += "--force-generic-extractor "
         if self.ui.list_playlist_contents_only_checkBox.isChecked():
-            self.output = self.output + "--flat-playlist "
+            self.option_output += "--flat-playlist "
         else:
-            #self.output = self.output + "--no-flat-playlist "
+            #self.option_output = self.option_output + "--no-flat-playlist "
             pass
         if self.ui.livestreams_from_start_checkBox.isChecked():
-            self.output = self.output + "--live-from-start "
+            self.option_output += "--live-from-start "
         else:
-            #self.output = self.output + "--no-live-from-start "
+            #self.option_output = self.option_output + "--no-live-from-start "
             pass
         if self.ui.wait_for_streams_checkBox.isChecked():
-            self.output = self.output + "--wait-for-video 10 "
+            self.option_output += "--wait-for-video 10 "
         else:
-            #self.output = self.output + "--no-wait-for-video "
+            #self.option_output = self.option_output + "--no-wait-for-video "
             pass
         if self.ui.mark_video_watched_checkBox.isChecked():
-            self.output = self.output + "--mark-watched "
+            self.option_output += "--mark-watched "
         else:
-            #self.output = self.output + "--no-mark-watched "
+            #self.option_output = self.option_output + "--no-mark-watched "
             pass
         
         if self.ui.color_codes_checkBox.isChecked():
-            self.output = self.output + "--no-colors "
+            self.option_output += "--no-colors "
         if self.ui.update_checkBox.isChecked():
-            self.output += "--update "
+            self.option_output += "--update "
 
         # Net/Geo Tab
         if self.ui.proxy_url_input.text() != "":
-            self.output += "--proxy " + self.ui.proxy_url_input.text() + " "
+            self.option_output += f"--proxy {self.ui.proxy_url_input.text()} "
         if self.ui.timeout_seconds_input.text() != "":
-            self.output += "--socket-timeout " + self.ui.timeout_seconds_input.text() + " "
+            self.option_output += f"--socket-timeout {self.ui.timeout_seconds_input.text()} "
         if self.ui.ip_input.text() != "":
-            self.output += "--source-address " + self.ui.ip_input.text() + " "
+            self.option_output += f"--source-address {self.ui.ip_input.text()} "
         if self.ui.force_ipv4_checkBox.isChecked():
-            self.output += "--force-ipv4 "
+            self.option_output += "--force-ipv4 "
         if self.ui.force_ipv6_checkBox.isChecked():
-            self.output += "--force-ipv6 "
+            self.option_output += "--force-ipv6 "
         if self.ui.geo_veri_proxy_url_input.text() != "":
-            self.output += "--geo-verification-proxy " + self.ui.geo_veri_proxy_url_input.text() + " "
+            self.option_output += f"--geo-verification-proxy {self.ui.geo_veri_proxy_url_input.text()} "
         if self.ui.geo_bypass_checkBox.isChecked():
-            #self.output += "--geo-bypass "
+            #self.option_output += "--geo-bypass "
             pass
         else:
-            self.output += "--no-geo-bypass "
+            self.option_output += "--no-geo-bypass "
         if self.ui.geo_bypass_country_code_input.text() != "":
-            self.output += "--geo-bypass-country " + self.ui.geo_bypass_country_code_input.text() + " "
+            self.option_output += f"--geo-bypass-country {self.ui.geo_bypass_country_code_input.text()} "
         if self.ui.geo_bypass_ip_block_input.text() != "":
-            self.output += "--geo-bypass-ip " + self.ui.geo_bypass_ip_block_input.text() + " "
+            self.option_output += f"--geo-bypass-ip {self.ui.geo_bypass_ip_block_input.text()} "
         
         
         # Video Tab
 
         # Download Tab
 
-        #Add user selected path to the output
+        #Add user selected path to the option_output
         self.output_path = self.ui.folder_path_input.text()
-        self.output = self.output + "-P " + self.output_path + " "
+        self.option_output = self.option_output + "-P " + self.output_path + " "
         self.audio_only = self.ui.audio_only_checkbox.isChecked()
 
-        #Add user selected format to the output
+        #Add user selected format to the option_output
         self.filetype = self.ui.filetype_dropdown.currentText()
 
         audio_quality = self.ui.audio_quality_slider.value()
@@ -313,47 +334,30 @@ class MainWindow(QtWidgets.QMainWindow):
         #print("Audio Quality (slider): " + audio_quality)
 
         if self.audio_only and self.filetype == "BEST":
-            self.output = self.output + "--extract-audio "
-            self.output = self.output + f"--audio quality {audio_quality} "
-            self.output = self.output + f"--remux-video {self.filetype} "
+            self.option_output += "--extract-audio "
+            self.option_output += f"--audio quality {audio_quality} "
+            self.option_output += f"--remux-video {self.filetype} "
         elif self.audio_only and self.filetype != "BEST":
-            self.output = self.output + f"-extract-audio --audio-format {self.filetype} "
-            self.output = self.output + f"--audio quality {audio_quality} "
-            self.output = self.output + f"--remux-video {self.filetype} "
+            self.option_output += f"-extract-audio --audio-format {self.filetype} "
+            self.option_output += f"--audio quality {audio_quality} "
+            self.option_output += f"--remux-video {self.filetype} "
         elif not self.audio_only and self.filetype == "BEST":
             pass
         else:
-            self.output = self.output + f"--format {self.filetype} "
-            #self.output = self.output + f"--merge-output-format {self.filetype} "
+            self.option_output = self.option_output + f"--format {self.filetype} "
+            #self.option_output = self.option_output + f"--merge-option_output-format {self.filetype} "
 
         
         
-        #self.output = self.output + "--video-multistreams "
-        #self.output = self.output + "--audio-multistreams "
+        #self.option_output = self.option_output + "--video-multistreams "
+        #self.option_output = self.option_output + "--audio-multistreams "
 
-        print("Current Options: " + self.output)
-        return self.output
+        return self.option_output
     
     # Utilities Tab
-    def restart(self):
-        QtCore.QCoreApplication.quit()
-        status = QtCore.QProcess.startDetached(sys.executable, sys.argv)
-        #print(status)
-
     @QtCore.pyqtSlot()
     def on_restart_button_clicked(self):
-        self.restart_warning = QtWidgets.QMessageBox()
-        self.restart_warning.buttonClicked.connect(self.popup_clicked)
-        self.restart_warning.setWindowTitle("Restarting...")
-        self.restart_warning.setText("Are you sure you want to restart?")
-        self.restart_warning.setInformativeText("This will close the application. Unsaved data and settings will be lost.")
-        #self.restart_warning.setIcon(QtWidgets.QMessageBox.warning) # QMessagebox icon options = warning, information, question, critical  ##### Causing an error in the console
-        self.restart_warning.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
-        self.restart_warning.setDefaultButton(QtWidgets.QMessageBox.Cancel)
-        self.restart_warning.exec_()
-        #self.savelist()
-    
-    
+        self.restart_with_warning()
     
     @QtCore.pyqtSlot()
     def on_load_urls_button_clicked(self):
@@ -369,7 +373,7 @@ class MainWindow(QtWidgets.QMainWindow):
             pass
         except KeyboardInterrupt:
             print("Keyboard Interrupt")
-            sys.exit()
+            pass
         return
 
     @QtCore.pyqtSlot()
@@ -400,7 +404,6 @@ class MainWindow(QtWidgets.QMainWindow):
         print("Created file is:", self.temp)
         print("Name of the file is:", self.temp.name)
         self.temp.close()
-        #print("Oh, no! List wasn't saved! It'll be empty tomorrow...")
 
     @QtCore.pyqtSlot()
     def on_add_config_file_button_clicked(self):
@@ -412,7 +415,6 @@ class MainWindow(QtWidgets.QMainWindow):
             self.ui.ignore_all_config_files_checkBox.setChecked(False)
         elif len(self.config_path)  <= 0:
             self.ui.ignore_all_config_files_checkBox.setChecked(True)
-
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
