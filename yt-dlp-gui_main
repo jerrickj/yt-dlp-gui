@@ -317,7 +317,25 @@ class MainWindow(QtWidgets.QMainWindow):
         
         
         # Video Tab
-
+        if self.ui.playlist_items_input.text() != "":
+            self.option_output += f"--playlist-items {self.ui.playlist_items_input.text()} "
+        if self.ui.minimum_filesize_input.text() != "":
+            self.option_output += f"--min-filesize {self.ui.minimum_filesize_input.text()} "
+        if self.ui.maximum_filesize_input.text() != "":
+            self.option_output += f"--max-filesize {self.ui.maximum_filesize_input.text()} "
+        if self.ui.specific_date_input.text() != "":
+            self.option_output += f"--date {self.ui.specific_date_input.text()} "
+        if self.ui.before_date_input.text() != "":
+            self.option_output += f"--datebefore {self.ui.before_date_input.text()} "
+        if self.ui.after_date_input.text() != "":
+            self.option_output += f"--dateafter {self.ui.after_date_input.text()} "
+        if  self.ui.filters_input.text() != "":
+            self.option_output += f"--match-filters {self.ui.filters_input.text()} "
+        if self.ui.age_limit_input.text() != "":
+            self.option_output += f"--age-limit {self.ui.age_limit_input.text()} "
+        
+        
+        
         # Download Tab
 
         #Add user selected path to the option_output
@@ -325,11 +343,10 @@ class MainWindow(QtWidgets.QMainWindow):
         self.option_output = self.option_output + "-P " + self.output_path + " "
         self.audio_only = self.ui.audio_only_checkbox.isChecked()
 
-        #Add user selected format to the option_output
+        #Add user selected file format to the option_output
         self.filetype = self.ui.filetype_dropdown.currentText()
 
-        audio_quality = self.ui.audio_quality_slider.value()
-        audio_quality = str(audio_quality)
+        audio_quality = str(self.ui.audio_quality_slider.value())
 
         #print("Audio Quality (slider): " + audio_quality)
 
@@ -383,7 +400,7 @@ class MainWindow(QtWidgets.QMainWindow):
         #with open(path, 'w') as listfile:
         #    listfile.write(urls)
         #listfile.close()
-        self.temp = tempfile.NamedTemporaryFile(prefix="yt-dlp-gui-", suffix=".txt", delete=False)
+        self.temp = tempfile.NamedTemporaryFile(prefix="yt-dlp-gui_", suffix=".txt", delete=False)
         try:    
             with open(self.temp.name, 'w') as listfile:
                 for url in urls:
