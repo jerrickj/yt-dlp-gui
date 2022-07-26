@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>702</width>
-    <height>650</height>
+    <width>874</width>
+    <height>671</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -31,6 +31,223 @@ color: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="8" column="2">
+     <widget class="QScrollBar" name="status_label_verticalScrollBar">
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QCheckBox" name="audio_only_checkbox">
+      <property name="font">
+       <font>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>AUDIO ONLY</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLabel" name="audio_quality_label">
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Audio Quality (Left = Better)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="1">
+     <widget class="QProgressBar" name="progressBar">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLabel" name="filetype_label">
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Please Select a Filetype:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="QLabel" name="progress_label">
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);
+font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QSlider" name="audio_quality_slider">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent</string>
+      </property>
+      <property name="maximum">
+       <number>10</number>
+      </property>
+      <property name="value">
+       <number>5</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" rowspan="6">
+     <widget class="QPlainTextEdit" name="url_input">
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(156, 156, 156, 255), stop:0.778409 rgba(255, 255, 255, 255));
+border-color: rgb(0, 0, 0);
+color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="input_url_label">
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Input URL's separated by a comma:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="folder_path_input">
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Please Select a Folder:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="browse_folder_button">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(190, 190,190);
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Browse for Download Folder</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QComboBox" name="filetype_dropdown">
+      <property name="acceptDrops">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(0, 0, 0, 0.4);
+border-color: rgb(0, 0, 0);
+opacity: 0;
+border-top-color: rgb(0, 0, 0);
+border-right-color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="currentText">
+       <string>BEST</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>BEST</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>mp4</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>flv</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ogg</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>webm</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>3gp</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QTextBrowser" name="status_label">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>8</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;
+color: rgb(0, 0, 0);</string>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="1">
+     <widget class="QPushButton" name="download_button">
+      <property name="styleSheet">
+       <string notr="true">font: 15pt &quot;Comic Sans MS&quot;;
+background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
+      <property name="text">
+       <string>Download</string>
+      </property>
+     </widget>
+    </item>
     <item row="7" column="0" rowspan="5">
      <widget class="QTabWidget" name="options_box">
       <property name="enabled">
@@ -272,6 +489,9 @@ color: rgb(0, 0, 0);</string>
         <property name="whatsThis">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Use the specified HTTP/HTTPS/SOCKS proxy. To&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                enable SOCKS proxy, specify a proper scheme.&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                Eg: socks5://user:pass@127.0.0.1:1080/. Pass&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                in an empty string (--proxy &amp;quot;&amp;quot;) for direct&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                connection&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -293,6 +513,9 @@ color: rgb(0, 0, 0);</string>
         </property>
         <property name="whatsThis">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Time to wait before giving up, in seconds&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
         </property>
         <property name="placeholderText">
          <string>Time to wait before giving up, in seconds</string>
@@ -357,6 +580,9 @@ color: rgb(0, 0, 0);</string>
         <property name="whatsThis">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Client-side IP address to bind to&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
         <property name="placeholderText">
          <string>Client-side IP address to bind to</string>
         </property>
@@ -414,6 +640,9 @@ color: rgb(0, 0, 0);</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
         <property name="placeholderText">
          <string>Use this proxy to verify the IP address for some geo-restricted sites.</string>
         </property>
@@ -468,6 +697,9 @@ color: rgb(0, 0, 0);</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
         <property name="placeholderText">
          <string>Two-letter ISO 3166-2 country code</string>
         </property>
@@ -502,6 +734,9 @@ color: rgb(0, 0, 0);</string>
           <width>261</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
         </property>
         <property name="placeholderText">
          <string>IP block in CIDR notation</string>
@@ -571,6 +806,9 @@ color: rgb(0, 0, 0);</string>
         <property name="whatsThis">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;Comma separated playlist_index of the videos&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                to download. You can specify a range using&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                &amp;quot;[START]:[STOP][:STEP]&amp;quot;. For backward&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                compatibility, START-STOP is also supported.&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                Use negative indices to count from the right&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                and negative STEP to download in reverse&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                order. Eg: &amp;quot;-I 1:3,7,-5::2&amp;quot; used on a&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                playlist of size 15 will download the videos&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                at index 1,2,3,7,11,13,15&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="minimum_filesize_input">
         <property name="geometry">
@@ -580,6 +818,9 @@ color: rgb(0, 0, 0);</string>
           <width>291</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="maximum_filesize_input">
@@ -591,6 +832,9 @@ color: rgb(0, 0, 0);</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="specific_date_input">
         <property name="geometry">
@@ -600,6 +844,9 @@ color: rgb(0, 0, 0);</string>
           <width>291</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
         </property>
        </widget>
        <widget class="QLineEdit" name="before_date_input">
@@ -611,6 +858,9 @@ color: rgb(0, 0, 0);</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="after_date_input">
         <property name="geometry">
@@ -620,6 +870,9 @@ color: rgb(0, 0, 0);</string>
           <width>291</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
         </property>
        </widget>
        <widget class="QLabel" name="playlist_items_label">
@@ -786,6 +1039,9 @@ color: rgb(0, 0, 0);</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
        </widget>
        <widget class="QCheckBox" name="download_playlist_checkBox">
         <property name="geometry">
@@ -817,6 +1073,9 @@ color: rgb(0, 0, 0);</string>
           <width>291</width>
           <height>20</height>
          </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
         </property>
        </widget>
        <widget class="QLabel" name="age_limit_label">
@@ -855,8 +1114,11 @@ color: rgb(0, 0, 0);</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
         <property name="placeholderText">
-         <string>Maximum download rate in bytes per second (e.g. 50K or 4.2M)</string>
+         <string>Max DL rate in bytes per second (e.g. 50K or 4.2M)</string>
         </property>
        </widget>
        <widget class="QLabel" name="max_download_rate_label">
@@ -912,6 +1174,9 @@ color: rgb(0, 0, 0);</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -950,8 +1215,11 @@ color: rgb(0, 0, 0);</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_18">
+       <widget class="QLineEdit" name="concurrent_frags_input">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -965,6 +1233,9 @@ color: rgb(0, 0, 0);</string>
         </property>
         <property name="whatsThis">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Number of fragments of a dash/hlsnative&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;                                video that should be downloaded concurrently&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;                                (default is 1)&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
         </property>
        </widget>
        <widget class="QLabel" name="retry_sleep_label">
@@ -1011,7 +1282,7 @@ color: rgb(0, 0, 0);</string>
          <string>Fragment Retries</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_21">
+       <widget class="QLabel" name="concurrent_frags_label">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1048,6 +1319,9 @@ color: rgb(0, 0, 0);</string>
         <property name="whatsThis">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;An expression for the time to sleep between&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                retries in seconds (optionally) prefixed by&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                the type of retry (file_access, fragment,&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                http (default)) to apply the sleep to. EXPR&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                can be a number, linear=START[:END[:STEP=1]]&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                or exp=START[:END[:BASE=2]]. This option can&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                be used multiple times to set the sleep for&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                the different retry types. Eg: --retry-sleep&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#c9d1d9; background-color:transparent;&quot;&gt;                                linear=1::2 --retry-sleep fragment:exp=1:20&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
        </widget>
        <widget class="QLineEdit" name="fragment_retries_input">
         <property name="geometry">
@@ -1058,12 +1332,15 @@ color: rgb(0, 0, 0);</string>
           <height>20</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
        </widget>
        <widget class="QCheckBox" name="skip_unavailable_fragments_checkBox">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>250</y>
+          <y>270</y>
           <width>151</width>
           <height>17</height>
          </rect>
@@ -1079,7 +1356,7 @@ color: rgb(0, 0, 0);</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>270</y>
+          <y>290</y>
           <width>151</width>
           <height>17</height>
          </rect>
@@ -1095,7 +1372,7 @@ color: rgb(0, 0, 0);</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>290</y>
+          <y>310</y>
           <width>151</width>
           <height>17</height>
          </rect>
@@ -1111,7 +1388,7 @@ color: rgb(0, 0, 0);</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>310</y>
+          <y>330</y>
           <width>151</width>
           <height>17</height>
          </rect>
@@ -1127,7 +1404,7 @@ color: rgb(0, 0, 0);</string>
         <property name="geometry">
          <rect>
           <x>190</x>
-          <y>290</y>
+          <y>330</y>
           <width>201</width>
           <height>17</height>
          </rect>
@@ -1143,7 +1420,7 @@ color: rgb(0, 0, 0);</string>
         <property name="geometry">
          <rect>
           <x>190</x>
-          <y>250</y>
+          <y>290</y>
           <width>201</width>
           <height>17</height>
          </rect>
@@ -1162,7 +1439,7 @@ color: rgb(0, 0, 0);</string>
         <property name="geometry">
          <rect>
           <x>190</x>
-          <y>270</y>
+          <y>310</y>
           <width>201</width>
           <height>17</height>
          </rect>
@@ -1189,6 +1466,9 @@ color: rgb(0, 0, 0);</string>
         <property name="whatsThis">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Number of fragments of a dash/hlsnative&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;                                video that should be downloaded concurrently&lt;/span&gt;&lt;/pre&gt;&lt;pre style=&quot; margin-top:0px; margin-bottom:16px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:145%;&quot;&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;                                (default is 1)&lt;/span&gt;&lt;/pre&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
        </widget>
        <widget class="QLabel" name="buffer_size_label">
         <property name="geometry">
@@ -1212,7 +1492,7 @@ color: rgb(0, 0, 0);</string>
          <string>Buffer Size</string>
         </property>
        </widget>
-       <widget class="QLabel" name="buffer_size_label_2">
+       <widget class="QLabel" name="download_sections_label">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -1234,7 +1514,7 @@ color: rgb(0, 0, 0);</string>
          <string>Download Sections</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="buffer_size_input_2">
+       <widget class="QLineEdit" name="download_sections_input">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -1248,6 +1528,66 @@ color: rgb(0, 0, 0);</string>
         </property>
         <property name="whatsThis">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Download only chapters whose title matches&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;the given regular expression. Time ranges&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;prefixed by a &amp;quot;*&amp;quot; can also be used in place&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;of chapters to download the specified range.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Eg: &amp;quot;*10:15-15:00&amp;quot;, &amp;quot;intro&amp;quot;. Needs ffmpeg.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;This option can be used multiple times to&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;download multiple sections, just place a comma&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;between sections.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="abort_on_unavailable_fragments_checkBox">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>270</y>
+          <width>171</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: transparent;</string>
+        </property>
+        <property name="text">
+         <string>Stop if Unavailable Fragments</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="http_chunk_size_label">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>250</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Download only chapters whose title matches&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;the given regular expression. Time ranges&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;prefixed by a &amp;quot;*&amp;quot; can also be used in place&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;of chapters to download the specified range.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Eg: &amp;quot;*10:15-15:00&amp;quot;, &amp;quot;intro&amp;quot;. Needs ffmpeg.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;This option can be used multiple times to&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;download multiple sections, just place a comma&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;between sections.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="whatsThis">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Download only chapters whose title matches&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;the given regular expression. Time ranges&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;prefixed by a &amp;quot;*&amp;quot; can also be used in place&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;of chapters to download the specified range.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Eg: &amp;quot;*10:15-15:00&amp;quot;, &amp;quot;intro&amp;quot;. Needs ffmpeg.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;This option can be used multiple times to&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;download multiple sections, just place a comma&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;between sections.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: transparent;</string>
+        </property>
+        <property name="text">
+         <string>HTTP Chunk Size</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="http_chunk_size_input">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>250</y>
+          <width>281</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Download only chapters whose title matches&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;the given regular expression. Time ranges&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;prefixed by a &amp;quot;*&amp;quot; can also be used in place&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;of chapters to download the specified range.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Eg: &amp;quot;*10:15-15:00&amp;quot;, &amp;quot;intro&amp;quot;. Needs ffmpeg.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;This option can be used multiple times to&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;download multiple sections, just place a comma&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;between sections.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="whatsThis">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Download only chapters whose title matches&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;the given regular expression. Time ranges&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;prefixed by a &amp;quot;*&amp;quot; can also be used in place&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;of chapters to download the specified range.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;Eg: &amp;quot;*10:15-15:00&amp;quot;, &amp;quot;intro&amp;quot;. Needs ffmpeg.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;This option can be used multiple times to&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;download multiple sections, just place a comma&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'ui-monospace','SFMono-Regular','SF Mono','Menlo','Consolas','Liberation Mono','monospace'; color:#000000; background-color:transparent;&quot;&gt;between sections.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(220, 220, 220);</string>
         </property>
        </widget>
       </widget>
@@ -1389,223 +1729,6 @@ background-color: rgb(190, 190, 190);</string>
       </widget>
      </widget>
     </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="folder_path_input">
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string>Please Select a Folder:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="browse_folder_button">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(190, 190,190);
-color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string>Browse for Download Folder</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QCheckBox" name="audio_only_checkbox">
-      <property name="font">
-       <font>
-        <underline>true</underline>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string>AUDIO ONLY</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="2">
-     <widget class="QScrollBar" name="status_label_verticalScrollBar">
-      <property name="mouseTracking">
-       <bool>true</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="1">
-     <widget class="QLabel" name="audio_quality_label">
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string>Audio Quality (Left = Better)</string>
-      </property>
-     </widget>
-    </item>
-    <item row="10" column="1">
-     <widget class="QProgressBar" name="progressBar">
-      <property name="styleSheet">
-       <string notr="true">color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="value">
-       <number>0</number>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" rowspan="6">
-     <widget class="QPlainTextEdit" name="url_input">
-      <property name="styleSheet">
-       <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(156, 156, 156, 255), stop:0.778409 rgba(255, 255, 255, 255));
-border-color: rgb(0, 0, 0);
-color: rgb(0, 0, 0);</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="input_url_label">
-      <property name="font">
-       <font>
-        <pointsize>14</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>Input URL's separated by a comma:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QLabel" name="filetype_label">
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string>Please Select a Filetype:</string>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="1">
-     <widget class="QComboBox" name="filetype_dropdown">
-      <property name="acceptDrops">
-       <bool>true</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgba(0, 0, 0, 0.4);
-border-color: rgb(0, 0, 0);
-opacity: 0;
-border-top-color: rgb(0, 0, 0);
-border-right-color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="currentText">
-       <string>BEST</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>BEST</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>mp4</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>flv</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>ogg</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>webm</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>3gp</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="7" column="1">
-     <widget class="QSlider" name="audio_quality_slider">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent</string>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="value">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="1">
-     <widget class="QLabel" name="progress_label">
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-color: rgb(0, 0, 0);
-font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
-    <item row="11" column="1">
-     <widget class="QPushButton" name="download_button">
-      <property name="styleSheet">
-       <string notr="true">font: 15pt &quot;Comic Sans MS&quot;;
-background-color: qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgba(0, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
-      </property>
-      <property name="text">
-       <string>Download</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="1">
-     <widget class="QTextBrowser" name="status_label">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: transparent;
-color: rgb(0, 0, 0);</string>
-      </property>
-     </widget>
-    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1613,7 +1736,7 @@ color: rgb(0, 0, 0);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>702</width>
+     <width>874</width>
      <height>21</height>
     </rect>
    </property>
