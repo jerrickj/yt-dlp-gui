@@ -94,8 +94,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 # def restart(self): # This is the function that actually restarts the program
                 QtCore.QCoreApplication.quit()
                 QtCore.QProcess.startDetached(sys.executable, sys.argv)
-            else:
-                pass
 
     def update_status_display(self, text_to_add):
         previous_text = self.ui.status_label.toPlainText()
@@ -135,7 +133,7 @@ class MainWindow(QtWidgets.QMainWindow):
         used_audio_formats = []
 
         for url in urls:
-            command = "yt-dlp -F " + url
+            command = f"yt-dlp -F {url}"
             proc = subprocess.Popen(
                 command,
                 stdin=subprocess.PIPE,
@@ -237,8 +235,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 )
                 self.update_status_display(f"Download Folder: {self.download_path}")
 
-                # Variables to update progress bar; current_url = current url being downloaded; url_total = total number of urls to download
-                current_url = 0
+                # Variables to update progress bar; current_url_number = current url being downloaded; url_total = total number of urls to download
+                current_url_number = 0
                 url_total = len(urls)
 
                 # Start Download Timer
@@ -248,15 +246,15 @@ class MainWindow(QtWidgets.QMainWindow):
                 for url in urls:
                     per_url_start = timer()
                     title_count_per_url = 0  # variable that iterates when the title of the video has been displayed, to prevent duplicate printouts
-                    current_url += 1
+                    current_url_number += 1
                     command = f"yt-dlp {options} {url}"
                     self.update_status_display(
-                        f"Downloading URL {str(current_url)} of {str(url_total)}: {url}"
+                        f"Downloading URL {current_url_number} of {url_total}: {url}"
                     )
 
                     # Update label above progress bar with current URL number out of total URLs
                     self.ui.progress_label.setText(
-                        f"Downloading {current_url} of {url_total}"
+                        f"Downloading {current_url_number} of {url_total}"
                     )
                     self.ui.progress_label.repaint()
 
@@ -298,18 +296,20 @@ class MainWindow(QtWidgets.QMainWindow):
                         per_url_elapsed_time
                     )  # shorten to 3 decimal places
                     self.update_status_display(
-                        f"URL {current_url} completed in {per_url_elapsed_time} seconds"
+                        f"URL {current_url_number} completed in {per_url_elapsed_time} seconds"
                     )
 
                 # Stop Download Timer (output in seconds)
                 elapsed_time = timer() - start
-                elapsed_time = self.truncate(
-                    elapsed_time
-                )  # shorten to 3 decimal places
+                elapsed_time = self.truncate(elapsed_time)
 
                 # Display elapsed time and comletion messages
+                if url_total == 1:
+                    self.update_status_display(
+                        f"Download completed in {elapsed_time} seconds"
+                    )
                 self.ui.progress_label.setText(
-                    f"Completed {current_url} of {url_total} downloads in {elapsed_time} seconds"
+                    f"Completed {current_url_number} of {url_total} downloads in {elapsed_time} seconds"
                 )
                 self.update_status_display("Download Complete")
                 self.update_status_display(
@@ -345,8 +345,8 @@ class MainWindow(QtWidgets.QMainWindow):
                 self.urls.remove(url)
             for char in url:
                 if char not in self.legal_characters:
-                    self.update_status_display("Invalid URL: " + url)
-                    self.update_status_display("Invalid Characters in URL: " + char)
+                    self.update_status_display(f"Invalid URL: {url}")
+                    self.update_status_display(f"Invalid Characters in URL: {char}")
 
                     self.urls.strip(url)
                     self.update_status_display("URL Removed")
@@ -354,8 +354,8 @@ class MainWindow(QtWidgets.QMainWindow):
         return self.urls
 
     # Compile the users options into a string
-    def option_compiler(self):
-        self.option_output = ""
+
+    def get_general_options(self):
         # General Tab
 
         # if self.ui.ignore_all_config_files_checkBox.isChecked():
@@ -380,6 +380,7 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.ui.update_checkBox.isChecked():
             self.option_output += "--update "
 
+    def get_netgeo_options(self):
         # Net/Geo Tab
         if self.ui.proxy_url_input.text() != "":
             self.option_output += f"--proxy {self.ui.proxy_url_input.text()} "
@@ -397,10 +398,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.option_output += (
                 f"--geo-verification-proxy {self.ui.geo_veri_proxy_url_input.text()} "
             )
-        if self.ui.geo_bypass_checkBox.isChecked():
-            # self.option_output += "--geo-bypass "
-            pass
-        else:
+        if not self.ui.geo_bypass_checkBox.isChecked():
             self.option_output += "--no-geo-bypass "
         if self.ui.geo_bypass_country_code_input.text() != "":
             self.option_output += (
@@ -411,6 +409,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 f"--geo-bypass-ip {self.ui.geo_bypass_ip_block_input.text()} "
             )
 
+    def get_video_options(self):
         # Video Tab
         if self.ui.playlist_items_input.text() != "":
             self.option_output += (
@@ -435,6 +434,7 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.ui.age_limit_input.text() != "":
             self.option_output += f"--age-limit {self.ui.age_limit_input.text()} "
 
+    def get_download_options(self):
         # Download Tab
         if self.ui.max_download_rate_input.text() != "":
             self.option_output += (
@@ -483,6 +483,13 @@ class MainWindow(QtWidgets.QMainWindow):
         if self.ui.no_use_mpegts_checkBox.isChecked():
             self.option_output += "--no-hls-use-mpegts "
 
+    def option_compiler(self):
+        self.option_output = ""
+        self.get_general_options()
+        self.get_netgeo_options()
+        self.get_video_options()
+        self.get_download_options()
+
         # Add user selected path to the option_output
         self.output_path = self.ui.folder_path_input.text()
         self.option_output = f"{self.option_output} -P {self.output_path} "
@@ -493,19 +500,17 @@ class MainWindow(QtWidgets.QMainWindow):
 
         audio_quality = str(self.ui.audio_quality_slider.value())
 
-        if self.audio_only and self.filetype == "BEST":
+        if self.audio_only and (self.filetype == "BEST"):
             self.option_output += "--extract-audio "
             self.option_output += f"--audio quality {audio_quality} "
             self.option_output += f"--remux-video {self.filetype} "
-        if self.audio_only and self.filetype != "BEST":
+        if self.audio_only and (self.filetype != "BEST"):
             self.option_output += f"-extract-audio --audio-format {self.filetype} "
             self.option_output += f"--audio quality {audio_quality} "
             self.option_output += f"--remux-video {self.filetype} "
-        if (
-            not self.audio_only and self.filetype == "BEST"
-        ):  # Unnecessary to add currently
-            pass
-        else:
+
+        # May be a better way to do this, but I'm not sure how
+        if self.audio_only or self.filetype != "BEST":
             self.option_output = f"{self.option_output} --format {self.filetype} "
 
         # self.option_output = f"{self.option_output} --video-multistreams "
@@ -523,16 +528,13 @@ class MainWindow(QtWidgets.QMainWindow):
         url_list = []
         try:
             with open(self.temp.name, "r") as listfile:
-                for url in listfile:
-                    url_list.append(url)
+                url_list.extend(iter(listfile))
             listfile.close()
             self.ui.url_input.setPlainText("".join(url_list))
         except Exception:
             print("No URL list found")
-            pass
         except KeyboardInterrupt:
             print("Keyboard Interrupt")
-            pass
         return
 
     @QtCore.pyqtSlot()
@@ -573,10 +575,10 @@ class MainWindow(QtWidgets.QMainWindow):
             self, "Select configuration file:"
         )
         self.config_path = self.config_path[0]
-        self.ui.config_label.setText("Config File: " + self.config_path)
+        self.ui.config_label.setText(f"Config File: {self.config_path}")
         if len(self.config_path) > 0:
             self.ui.ignore_all_config_files_checkBox.setChecked(False)
-        elif len(self.config_path) <= 0:
+        else:
             self.ui.ignore_all_config_files_checkBox.setChecked(True)
 
 
