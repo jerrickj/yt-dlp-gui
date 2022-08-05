@@ -292,9 +292,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
                     # Stop Download Timer (output in seconds)
                     per_url_elapsed_time = timer() - per_url_start
-                    per_url_elapsed_time = self.truncate(
-                        per_url_elapsed_time
-                    )  # shorten to 3 decimal places
+                    per_url_elapsed_time = self.truncate(per_url_elapsed_time)
                     self.update_status_display(
                         f"URL {current_url_number} completed in {per_url_elapsed_time} seconds"
                     )
@@ -308,9 +306,10 @@ class MainWindow(QtWidgets.QMainWindow):
                     self.update_status_display(
                         f"Download completed in {elapsed_time} seconds"
                     )
-                self.ui.progress_label.setText(
-                    f"Completed {current_url_number} of {url_total} downloads in {elapsed_time} seconds"
-                )
+                else:
+                    self.ui.progress_label.setText(
+                        f"Completed {current_url_number} of {url_total} downloads in {elapsed_time} seconds"
+                    )
                 self.update_status_display("Download Complete")
                 self.update_status_display(
                     f"Total Download Time: {elapsed_time} seconds"
