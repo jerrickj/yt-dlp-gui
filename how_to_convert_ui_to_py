@@ -1,4 +1,5 @@
-for PyQt5 Qt Designer 
+for PyQt5 Qt Designer (designer in command prompt to open)
+
 
 (in file directory command prompt)
 pyuic5 -x filename.ui -o filename.py
